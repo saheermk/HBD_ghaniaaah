@@ -75,9 +75,20 @@
         <p>May your day be filled with joy, love, and beautiful surprises!</p>
         <button class="surprise" onclick="showContent()">Click for a Surprise</button>
         <div class="hidden-content" id="hiddenContent">
-            <audio src="hbd.m4a" autoplay loop controls muted>
-  Your browser does not support the audio element.
-</audio>
+            <audio id="hiddenAudio" src="hbd.mp3" preload="auto"></audio>
+<script>
+    window.onload = function() {
+  const audio = document.getElementById("hiddenAudio");
+
+  // Ensure audio is loaded completely before playing
+  audio.oncanplaythrough = function() {
+    audio.play();
+    audio.onended = function() {
+      audio.remove(); // Remove the audio element after playback
+    };
+  };
+};
+</script>
 
             <div class="hidden-message">You are truly amazing! Wishing you all the best on your special day!</div>
             <div class="hidden-image">
